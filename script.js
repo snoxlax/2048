@@ -53,6 +53,10 @@ function slide(row) {
             row[i + 1] = 0;
             score += row[i];
         }
+        else {
+            //do somthing
+            document.getElementById("game-over").style.display = 'flex'
+        }
     }
     row = filterZero(row); //add zeroes
     while (row.length < cols) {
