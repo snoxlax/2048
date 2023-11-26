@@ -5,5 +5,5 @@ game still in development but is playable
 -need to add game over state
 
 ## Demo
-[Play 2048]()
+[Play 2048](https://snoxlax.github.io/2048/)
 
