@@ -2,6 +2,7 @@ var board;
 var score = 0;
 var rows = 4;
 var cols = 4;
+let hasChanged;
 
 window.onload = function () {
     startGame();
@@ -27,7 +28,6 @@ function startGame() {
     //create 2 to begin the game
     addTwo();
     addTwo();
-
 }
 
 function updateTile(tile, num) {
@@ -52,10 +52,6 @@ function slide(row) {
             row[i] *= 2;
             row[i + 1] = 0;
             score += row[i];
-        }
-        else {
-            //do somthing
-            document.getElementById("game-over").style.display = 'flex'
         }
     }
     row = filterZero(row); //add zeroes
@@ -96,13 +92,18 @@ function slideRight() {
 
 function slideUp() {
     for (let c = 0; c < cols; c++) {
-        let row = [board[0][c], board[1][c], board[2][c], board[3][c]];
-        row = slide(row);
-        for (let r = 0; r < rows; r++) {
-            board[r][c] = row[r];
-            let tile = document.getElementById(r.toString() + "-" + c.toString());
-            let num = board[r][c];
-            updateTile(tile, num);
+        let oldrow = [board[0][c], board[1][c], board[2][c], board[3][c]];
+        let newrow = slide(oldrow);
+        if (newrow !== oldrow) {
+            for (let r = 0; r < rows; r++) {
+                board[r][c] = newrow[r];
+                let tile = document.getElementById(r.toString() + "-" + c.toString());
+                let num = board[r][c];
+                updateTile(tile, num);
+            }
+        }
+        else {
+            console.log("not moving");
         }
     }
     addTwo()
@@ -128,7 +129,8 @@ function addTwo() {
     if (!hasEmptyTile()) {
         return;
     }
-    let placed = false;
+    let placed;
+    placed = false;
     while (!placed) {
         //find random row and column to place a 2 in
         let r = Math.floor(Math.random() * rows);
@@ -139,6 +141,7 @@ function addTwo() {
             tile.innerText = "2";
             tile.classList.add("x2");
             placed = true;
+            hasChanged = true;
         }
     }
 }
@@ -152,6 +155,17 @@ function hasEmptyTile() {
             }
         }
     }
+    hasChanged = false;
     return false;
+}
+
+function checkGameOver() {
+
+}
+
+function gameCheck() {
+    if (!hasChanged) {
+        document.getElementById("game-over").style.display = 'flex'
+    }
 }
 
