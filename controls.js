@@ -16,7 +16,7 @@ document.addEventListener('keyup', (event) => {
             break;
     }
     document.getElementById("score").innerText = score;
-    gameCheck();
+    checkGameOver();
     console.log(hasChanged);
 })
 
