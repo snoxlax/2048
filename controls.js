@@ -20,10 +20,12 @@ document.addEventListener('keyup', (event) => {
 
 
 //Handle Touch screen control
-
-
 let area = document.getElementById('body');
-area.addEventListener("touchstart", touchStart)
+
+window.addEventListener('load', function () {
+    area.addEventListener("touchstart", touchStart)
+})
+
 
 let startX, startY, endX, endY;
 let swipeThreshold = 45;
@@ -31,7 +33,6 @@ let isTap = true;
 
 
 function touchStart(e) {
-    console.log("start");
     if (e.type === 'touchstart' && e.touches.length === 1) {
         startX = e.touches[0].clientX;
         startY = e.touches[0].clientY;
@@ -39,7 +40,6 @@ function touchStart(e) {
         area.addEventListener('touchmove', handleSwipe);
         area.addEventListener('touchend', handleSwipeEnd);
         isTap = true;
-
     }
 }
 
