@@ -133,6 +133,7 @@ function slideDown() {
 
 function addTwo() {
     if (!hasEmptyTile()) {
+        checkGameOver();
         return;
     }
     let placed;
@@ -161,7 +162,6 @@ function hasEmptyTile() {
             }
         }
     }
-    hasChanged = false;
     return false;
 }
 

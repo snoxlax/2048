@@ -16,13 +16,13 @@ document.addEventListener('keyup', (event) => {
             break;
     }
     document.getElementById("score").innerText = score;
-    checkGameOver();
-    console.log(hasChanged);
 })
 
 
-//Handle Touch screen controls
-const area = document.getElementById("board")
+//Handle Touch screen control
+
+
+let area = document.getElementById('body');
 area.addEventListener("touchstart", touchStart)
 
 let startX, startY, endX, endY;
@@ -31,6 +31,7 @@ let isTap = true;
 
 
 function touchStart(e) {
+    console.log("start");
     if (e.type === 'touchstart' && e.touches.length === 1) {
         startX = e.touches[0].clientX;
         startY = e.touches[0].clientY;
@@ -38,6 +39,7 @@ function touchStart(e) {
         area.addEventListener('touchmove', handleSwipe);
         area.addEventListener('touchend', handleSwipeEnd);
         isTap = true;
+
     }
 }
 
