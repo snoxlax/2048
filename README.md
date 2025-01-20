@@ -64,7 +64,3 @@ Contributions are welcome! Please follow these steps:
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
----
-
-Feel free to customize this README as needed. Thank you for checking out my project, and I hope you enjoy playing my custom 2048 game!
